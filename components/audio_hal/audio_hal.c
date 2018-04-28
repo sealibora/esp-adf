@@ -26,9 +26,10 @@
 #include "driver/gpio.h"
 #include "esp_log.h"
 #include "audio_hal.h"
-
 #include "audio_mem.h"
 #include "audio_mutex.h"
+#include "sdkconfig.h"
+
 
 static const char *TAG = "AUDIO_HAL";
 
@@ -37,6 +38,9 @@ static const char *TAG = "AUDIO_HAL";
         ESP_LOGE(TAG, format, ##__VA_ARGS__); \
         return b;\
     }
+
+
+
 
 audio_hal_handle_t audio_hal_init(audio_hal_codec_config_t *audio_hal_conf, audio_hal_func_t *audio_hal_func)
 {
@@ -66,6 +70,9 @@ audio_hal_handle_t audio_hal_init(audio_hal_codec_config_t *audio_hal_conf, audi
     audio_hal->handle = audio_hal;
     audio_hal_func->handle = audio_hal;
     mutex_unlock(audio_hal->audio_hal_lock);
+#ifdef CONFIG_ESP32_LYRAT
+    es8388_pa_power(true);
+#endif
     return audio_hal;
 }
 

@@ -26,7 +26,7 @@
 #include "esp_log.h"
 #include "driver/i2c.h"
 #include "es8388.h"
-#include "board_pins_config.h"
+#include "board.h"
 
 static const char *ES_TAG = "ES8388_DRIVER";
 

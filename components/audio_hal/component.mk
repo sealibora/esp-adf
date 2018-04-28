@@ -30,3 +30,9 @@ COMPONENT_ADD_LDFLAGS += -L$(COMPONENT_PATH)/driver/zl38063/firmware -lfirmware
 endif
 
 
+ifdef CONFIG_AUDIO_KIT
+COMPONENT_ADD_INCLUDEDIRS += ./driver/AC101 ./board/ai_audio_v1_0
+COMPONENT_SRCDIRS += ./driver/AC101 ./board/ai_audio_v1_0
+endif
+
+

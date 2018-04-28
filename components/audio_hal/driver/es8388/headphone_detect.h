@@ -28,6 +28,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#include "sdkconfig.h"
 
 /**
  * @brief Get headphone insertion status
@@ -55,7 +56,6 @@ void headphone_detect_init();
  * @return None.
  */
 void headphone_detect_deinit();
-
 
 #ifdef __cplusplus
 }

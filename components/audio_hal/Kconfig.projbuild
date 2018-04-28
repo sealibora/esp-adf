@@ -14,6 +14,8 @@ config ESP_LYRATD_MSC_V2_1_BOARD
     bool "ESP32-LyraTD-MSC V2.1"
 config ESP_LYRATD_MSC_V2_2_BOARD
     bool "ESP32-LyraTD-MSC V2.2"
+config AUDIO_KIT
+    bool "AUDIO_KIT"
 endchoice
 
 endmenu

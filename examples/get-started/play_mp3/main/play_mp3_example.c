@@ -75,7 +75,7 @@ void app_main(void)
     audio_pipeline_register(pipeline, i2s_stream_writer, "i2s");
 
     ESP_LOGI(TAG, "[2.4] Link it together [mp3_music_read_cb]-->mp3_decoder-->i2s_stream-->[codec_chip]");
-#if (CONFIG_ESP_LYRAT_V4_3_BOARD || CONFIG_ESP_LYRAT_V4_2_BOARD)
+#if (CONFIG_ESP_LYRAT_V4_3_BOARD || CONFIG_ESP_LYRAT_V4_2_BOARD || CONFIG_AUDIO_KIT)
     audio_pipeline_link(pipeline, (const char *[]) {"mp3", "i2s"}, 2);
 #endif
 
@@ -123,7 +123,7 @@ void app_main(void)
 
             /* Es8388 and es8374 use this function to set I2S and codec to the same frequency as the music file, and zl38063
              * does not need this step because the data has been resampled.*/
-#if (CONFIG_ESP_LYRAT_V4_3_BOARD || CONFIG_ESP_LYRAT_V4_2_BOARD)
+#if (CONFIG_ESP_LYRAT_V4_3_BOARD || CONFIG_ESP_LYRAT_V4_2_BOARD || CONFIG_AUDIO_KIT)
             i2s_stream_set_clk(i2s_stream_writer, music_info.sample_rates , music_info.bits, music_info.channels);
 #endif
             continue;

@@ -108,11 +108,11 @@ typedef enum{
 }ac_i2s1_lrck_div_t;
 
 typedef enum{
-	BIT_LENGTH_8	=0x0,
-	BIT_LENGTH_16	=0x1,
-	BIT_LENGTH_20	=0x2,
-	BIT_LENGTH_24	=0x3,
-}ac_i2s1_word_siz_t;
+    BIT_LENGTH_8_BITS = 0x00,
+    BIT_LENGTH_16_BITS = 0x01,
+    BIT_LENGTH_20_BITS = 0x02,
+    BIT_LENGTH_24_BITS = 0x03,
+} ac_bits_length_t;
 
 typedef enum {
     AC_MODE_MIN = -1,
@@ -155,7 +155,7 @@ typedef enum {
 
 
 /**
- * @brief Configure ES8388 clock
+ * @brief Configure AC101 clock
  */
 typedef struct {
 	ac_i2s1_bclk_div_t bclk_div;    /*!< bits clock divide */
@@ -169,8 +169,6 @@ esp_err_t AC101_ctrl_state(audio_hal_codec_mode_t mode, audio_hal_ctrl_t ctrl_st
 esp_err_t AC101_config_i2s(audio_hal_codec_mode_t mode, audio_hal_codec_i2s_iface_t* iface);
 esp_err_t AC101_set_voice_volume(int volume);
 esp_err_t AC101_get_voice_volume(int* volume);
-esp_err_t AC101_config_i2s(audio_hal_codec_mode_t mode, audio_hal_codec_i2s_iface_t* iface);
-esp_err_t AC101_dac_mixer_source(ac_dac_mixer_source_t src);
-
+void AC101_pa_power(bool enable);
 
 #endif
